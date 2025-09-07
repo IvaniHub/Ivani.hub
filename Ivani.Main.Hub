@@ -1,0 +1,768 @@
+-- Check if the script is running in "Grow a Garden" (PlaceId: 126884695634066)
+local targetPlaceId = 126884695634066
+if game.PlaceId ~= targetPlaceId then
+    warn("This script is only for 'Grow a Garden' (PlaceId: 126884695634066). Kicking player...")
+    game.Players.LocalPlayer:Kick("The script only works in Grow a Garden!")
+    return -- Exit the script
+end
+
+-- Disable flag and authentication check
+local isScriptDisabled = true -- Script is disabled by default
+local function checkAuthentication()
+    -- Placeholder authentication logic (customize this)
+    -- Example: Check a local key entered by the user or a server response
+    local authKey = "IVAN" -- Replace with your authentication key
+    local userInputKey = "IVAN" -- Replace with user input or server-provided key (e.g., via prompt)
+
+    -- Simulate authentication (replace with real logic)
+    if authKey == userInputKey then
+        isScriptDisabled = false -- Enable script if key matches
+    else
+        isScriptDisabled = true -- Keep disabled if key doesn't match
+    end
+    return not isScriptDisabled -- Return true if enabled, false if disabled
+end
+
+-- Check authentication and kick if disabled
+if not checkAuthentication() then
+    warn("Script is disabled. Kicking player...")
+    game.Players.LocalPlayer:Kick("Script has been disabled by it's owner.")
+    return -- Exit the script
+end
+
+--[=[
+ d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
+88' Y8b 88    88   88'        VP  8D      88      88    88 d8' `8b 
+88      88    88    88            odD'      88      88    88 88ooo88 
+88  ooo 88    88    88          .88'        88      88    88 88~~~88 
+88. 8 88b  d88   .88.        j88.         88booo. 88b  d88 88   88    @uniquadev
+ Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
+]=]
+
+-- Instances: 30 | Scripts: 6 | Modules: 0 | Tags: 0
+local G2L = {};
+
+-- StarterGui.ScreenGui
+G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+
+
+-- StarterGui.ScreenGui.LocalScript
+G2L["2"] = Instance.new("LocalScript", G2L["1"]);
+
+
+
+-- StarterGui.ScreenGui.Notification
+G2L["3"] = Instance.new("Frame", G2L["1"]);
+G2L["3"]["Visible"] = false;
+G2L["3"]["BorderSizePixel"] = 0;
+G2L["3"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["3"]["Size"] = UDim2.new(0.26872, 0, 0.12791, 0);
+G2L["3"]["Position"] = UDim2.new(0.70044, 0, 0.72093, 0);
+G2L["3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["3"]["Name"] = [[Notification]];
+G2L["3"]["BackgroundTransparency"] = 0.6;
+
+
+-- StarterGui.ScreenGui.Notification.TextLabel
+G2L["4"] = Instance.new("TextLabel", G2L["3"]);
+G2L["4"]["TextWrapped"] = true;
+G2L["4"]["BorderSizePixel"] = 0;
+G2L["4"]["TextSize"] = 14;
+G2L["4"]["TextScaled"] = true;
+G2L["4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["4"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["4"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["4"]["BackgroundTransparency"] = 1;
+G2L["4"]["Size"] = UDim2.new(0, 113, 0, 20);
+G2L["4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["4"]["Text"] = [[Ivani Key System]];
+G2L["4"]["Position"] = UDim2.new(0.19672, 0, 0.21818, 0);
+
+
+-- StarterGui.ScreenGui.Notification.TextLabel
+G2L["5"] = Instance.new("TextLabel", G2L["3"]);
+G2L["5"]["TextWrapped"] = true;
+G2L["5"]["BorderSizePixel"] = 0;
+G2L["5"]["TextSize"] = 14;
+G2L["5"]["TextScaled"] = true;
+G2L["5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["5"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["5"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["5"]["BackgroundTransparency"] = 1;
+G2L["5"]["Size"] = UDim2.new(0, 77, 0, 15);
+G2L["5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["5"]["Text"] = [[Key is Valid]];
+G2L["5"]["Position"] = UDim2.new(0.28962, 0, 0.58182, 0);
+
+
+-- StarterGui.ScreenGui.KeySystem
+G2L["6"] = Instance.new("Frame", G2L["1"]);
+G2L["6"]["BorderSizePixel"] = 0;
+G2L["6"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["6"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+G2L["6"]["Size"] = UDim2.new(0, 350, 0, 203);
+G2L["6"]["Position"] = UDim2.new(0.5, 0, 0.45526, 0);
+G2L["6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["6"]["Name"] = [[KeySystem]];
+
+
+-- StarterGui.ScreenGui.KeySystem.TextLabel
+G2L["7"] = Instance.new("TextLabel", G2L["6"]);
+G2L["7"]["BorderSizePixel"] = 0;
+G2L["7"]["TextSize"] = 21;
+G2L["7"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["7"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["7"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["7"]["Size"] = UDim2.new(0, 189, 0, 28);
+G2L["7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["7"]["Text"] = [[Ivani Key System]];
+G2L["7"]["Position"] = UDim2.new(0.23143, 0, 0, 0);
+
+
+-- StarterGui.ScreenGui.KeySystem.ExitButton
+G2L["8"] = Instance.new("TextButton", G2L["6"]);
+G2L["8"]["TextWrapped"] = true;
+G2L["8"]["BorderSizePixel"] = 0;
+G2L["8"]["TextSize"] = 14;
+G2L["8"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["8"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["8"]["BackgroundTransparency"] = 1;
+G2L["8"]["Size"] = UDim2.new(0, 32, 0, 18);
+G2L["8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["8"]["Text"] = [[X]];
+G2L["8"]["Name"] = [[ExitButton]];
+G2L["8"]["Position"] = UDim2.new(0.90857, 0, 0.02857, 0);
+
+
+-- StarterGui.ScreenGui.KeySystem.ExitButton.LocalScript
+G2L["9"] = Instance.new("LocalScript", G2L["8"]);
+
+
+
+-- StarterGui.ScreenGui.KeySystem.UIStroke
+G2L["a"] = Instance.new("UIStroke", G2L["6"]);
+G2L["a"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
+G2L["a"]["Thickness"] = 2;
+G2L["a"]["Color"] = Color3.fromRGB(255, 255, 255);
+
+
+-- StarterGui.ScreenGui.KeySystem.EnterKey
+G2L["b"] = Instance.new("Frame", G2L["6"]);
+G2L["b"]["BorderSizePixel"] = 0;
+G2L["b"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["b"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+G2L["b"]["Size"] = UDim2.new(0, 294, 0, 26);
+G2L["b"]["Position"] = UDim2.new(0.48857, 0, 0.23852, 0);
+G2L["b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["b"]["Name"] = [[EnterKey]];
+
+
+-- StarterGui.ScreenGui.KeySystem.EnterKey.FixTextBoxOverflow
+G2L["c"] = Instance.new("LocalScript", G2L["b"]);
+G2L["c"]["Name"] = [[FixTextBoxOverflow]];
+
+
+-- StarterGui.ScreenGui.KeySystem.EnterKey.UIStroke
+G2L["d"] = Instance.new("UIStroke", G2L["b"]);
+G2L["d"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
+G2L["d"]["Thickness"] = 2;
+G2L["d"]["Color"] = Color3.fromRGB(255, 255, 255);
+
+
+-- StarterGui.ScreenGui.KeySystem.EnterKey.TextBox
+G2L["e"] = Instance.new("TextBox", G2L["b"]);
+G2L["e"]["BorderSizePixel"] = 0;
+G2L["e"]["TextSize"] = 14;
+G2L["e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["e"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["e"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["e"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+G2L["e"]["ClearTextOnFocus"] = false;
+G2L["e"]["PlaceholderText"] = [[Enter your key here...]];
+G2L["e"]["Size"] = UDim2.new(0, 293, 0, 32);
+G2L["e"]["Position"] = UDim2.new(0.50015, 0, 0.49025, 0);
+G2L["e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["e"]["Text"] = [[]];
+G2L["e"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.ScreenGui.KeySystem.VerifyKey
+G2L["f"] = Instance.new("Frame", G2L["6"]);
+G2L["f"]["BorderSizePixel"] = 0;
+G2L["f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["f"]["Size"] = UDim2.new(0, 134, 0, 35);
+G2L["f"]["Position"] = UDim2.new(0.52571, 0, 0.37931, 0);
+G2L["f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["f"]["Name"] = [[VerifyKey]];
+
+
+-- StarterGui.ScreenGui.KeySystem.VerifyKey.VerifyKeyButton
+G2L["10"] = Instance.new("TextButton", G2L["f"]);
+G2L["10"]["BorderSizePixel"] = 0;
+G2L["10"]["TextSize"] = 19;
+G2L["10"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["10"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["10"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["10"]["Size"] = UDim2.new(0, 134, 0, 36);
+G2L["10"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["10"]["Text"] = [[Verify Key]];
+G2L["10"]["Name"] = [[VerifyKeyButton]];
+G2L["10"]["Position"] = UDim2.new(0, 0, -0.005, 0);
+
+
+-- StarterGui.ScreenGui.KeySystem.VerifyKey.VerifyKeyButton.LocalScript
+G2L["11"] = Instance.new("LocalScript", G2L["10"]);
+
+
+
+-- StarterGui.ScreenGui.KeySystem.VerifyKey.UIStroke
+G2L["12"] = Instance.new("UIStroke", G2L["f"]);
+G2L["12"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
+G2L["12"]["Thickness"] = 2;
+G2L["12"]["Color"] = Color3.fromRGB(255, 255, 255);
+
+
+-- StarterGui.ScreenGui.KeySystem.GetKey
+G2L["13"] = Instance.new("Frame", G2L["6"]);
+G2L["13"]["BorderSizePixel"] = 0;
+G2L["13"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["13"]["Size"] = UDim2.new(0, 134, 0, 35);
+G2L["13"]["Position"] = UDim2.new(0.06857, 0, 0.38424, 0);
+G2L["13"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["13"]["Name"] = [[GetKey]];
+
+
+-- StarterGui.ScreenGui.KeySystem.GetKey.GetKeyButton
+G2L["14"] = Instance.new("TextButton", G2L["13"]);
+G2L["14"]["BorderSizePixel"] = 0;
+G2L["14"]["TextSize"] = 19;
+G2L["14"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["14"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["14"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["14"]["Size"] = UDim2.new(0, 134, 0, 36);
+G2L["14"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["14"]["Text"] = [[Get Key]];
+G2L["14"]["Name"] = [[GetKeyButton]];
+G2L["14"]["Position"] = UDim2.new(-0.00272, 0, -0.00468, 0);
+
+
+-- StarterGui.ScreenGui.KeySystem.GetKey.GetKeyButton.LocalScript
+G2L["15"] = Instance.new("LocalScript", G2L["14"]);
+
+
+
+-- StarterGui.ScreenGui.KeySystem.GetKey.UIStroke
+G2L["16"] = Instance.new("UIStroke", G2L["13"]);
+G2L["16"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
+G2L["16"]["Thickness"] = 2;
+G2L["16"]["Color"] = Color3.fromRGB(255, 255, 255);
+
+
+-- StarterGui.ScreenGui.KeySystem.JoinDiscord
+G2L["17"] = Instance.new("Frame", G2L["6"]);
+G2L["17"]["BorderSizePixel"] = 0;
+G2L["17"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["17"]["Size"] = UDim2.new(0, 294, 0, 35);
+G2L["17"]["Position"] = UDim2.new(0.06467, 0, 0.62562, 0);
+G2L["17"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["17"]["Name"] = [[JoinDiscord]];
+
+
+-- StarterGui.ScreenGui.KeySystem.JoinDiscord.JoinDiscordButton
+G2L["18"] = Instance.new("TextButton", G2L["17"]);
+G2L["18"]["BorderSizePixel"] = 0;
+G2L["18"]["TextSize"] = 20;
+G2L["18"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["18"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["18"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["18"]["Size"] = UDim2.new(0, 294, 0, 35);
+G2L["18"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["18"]["Text"] = [[Join Discord]];
+G2L["18"]["Name"] = [[JoinDiscordButton]];
+G2L["18"]["Position"] = UDim2.new(-0.00216, 0, -0.00468, 0);
+
+
+-- StarterGui.ScreenGui.KeySystem.JoinDiscord.JoinDiscordButton.LocalScript
+G2L["19"] = Instance.new("LocalScript", G2L["18"]);
+
+
+
+-- StarterGui.ScreenGui.KeySystem.JoinDiscord.UIStroke
+G2L["1a"] = Instance.new("UIStroke", G2L["17"]);
+G2L["1a"]["LineJoinMode"] = Enum.LineJoinMode.Miter;
+G2L["1a"]["Thickness"] = 2;
+G2L["1a"]["Color"] = Color3.fromRGB(255, 255, 255);
+
+
+-- StarterGui.ScreenGui.KeySystem.TextLabel
+G2L["1b"] = Instance.new("TextLabel", G2L["6"]);
+G2L["1b"]["TextWrapped"] = true;
+G2L["1b"]["BorderSizePixel"] = 0;
+G2L["1b"]["TextSize"] = 19;
+G2L["1b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["1b"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["1b"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["1b"]["BackgroundTransparency"] = 1;
+G2L["1b"]["Size"] = UDim2.new(0, 296, 0, 26);
+G2L["1b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["1b"]["Text"] = [[↑↑ join discord for key update↑↑]];
+G2L["1b"]["Position"] = UDim2.new(0.07714, 0, 0.87192, 0);
+
+
+-- StarterGui.ScreenGui.Notification
+G2L["1c"] = Instance.new("Frame", G2L["1"]);
+G2L["1c"]["Visible"] = false;
+G2L["1c"]["BorderSizePixel"] = 0;
+G2L["1c"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["1c"]["Size"] = UDim2.new(0.26872, 0, 0.12791, 0);
+G2L["1c"]["Position"] = UDim2.new(0.7, 0, 0.721, 0);
+G2L["1c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["1c"]["Name"] = [[Notification]];
+G2L["1c"]["BackgroundTransparency"] = 0.6;
+
+
+-- StarterGui.ScreenGui.Notification.TextLabel
+G2L["1d"] = Instance.new("TextLabel", G2L["1c"]);
+G2L["1d"]["TextWrapped"] = true;
+G2L["1d"]["BorderSizePixel"] = 0;
+G2L["1d"]["TextSize"] = 14;
+G2L["1d"]["TextScaled"] = true;
+G2L["1d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["1d"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["1d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["1d"]["BackgroundTransparency"] = 1;
+G2L["1d"]["Size"] = UDim2.new(0, 113, 0, 20);
+G2L["1d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["1d"]["Text"] = [[Ivani Key System]];
+G2L["1d"]["Position"] = UDim2.new(0.19672, 0, 0.21818, 0);
+
+
+-- StarterGui.ScreenGui.Notification.TextLabel
+G2L["1e"] = Instance.new("TextLabel", G2L["1c"]);
+G2L["1e"]["TextWrapped"] = true;
+G2L["1e"]["BorderSizePixel"] = 0;
+G2L["1e"]["TextSize"] = 14;
+G2L["1e"]["TextScaled"] = true;
+G2L["1e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["1e"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["1e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["1e"]["BackgroundTransparency"] = 1;
+G2L["1e"]["Size"] = UDim2.new(0, 77, 0, 15);
+G2L["1e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["1e"]["Text"] = [[Key Invalid]];
+G2L["1e"]["Position"] = UDim2.new(0.28962, 0, 0.58182, 0);
+
+
+-- StarterGui.ScreenGui.LocalScript
+local function C_2()
+local script = G2L["2"];
+	--// BUTTON LOGIC
+	local StarterGui = game:GetService("StarterGui")
+	local Players = game:GetService("Players")
+	local LocalPlayer = Players.LocalPlayer
+	
+	local IvaniHubScript = nil
+	for i, child in StarterGui:GetChildren() do
+		if child:IsA("LocalScript") and child.Name == "IvaniHub" then
+			IvaniHubScript = child
+			break
+		end
+	end
+	
+	GetKeyBtn.MouseButton1Click:Connect(function()
+		setclipboard(VALID_KEY)
+		Message.Text = "Key copied to clipboard!"
+		Message.TextColor3 = Color3.fromRGB(50,255,50)
+	end)
+	
+	VerifyKeyBtn.MouseButton1Click:Connect(function()
+		if KeyBox.Text == "" then
+			Message.Text = "Please enter a key!"
+			Message.TextColor3 = Color3.fromRGB(255, 50, 50)
+		elseif KeyBox.Text == VALID_KEY then
+			Message.Text = "Access Granted!"
+			Message.TextColor3 = Color3.fromRGB(50,255,50)
+			wait(1)
+			ScreenGui:Destroy()
+			-- Set global flag so IvaniHub can show
+			_G.IvaniHubKeyValid = true
+			-- Run IvaniHub LocalScript (if not already run)
+			if IvaniHubScript then
+				-- Re-run the IvaniHub script by cloning and running it
+				local clone = IvaniHubScript:Clone()
+				clone.Parent = StarterGui
+				clone.Disabled = false
+			end
+		else
+			Message.Text = "Invalid key, try again."
+			Message.TextColor3 = Color3.fromRGB(255,50,50)
+		end
+	end)
+	
+	DiscordBtn.MouseButton1Click:Connect(function()
+		setclipboard(DISCORD_LINK)
+		Message.Text = "Discord link copied!"
+		Message.TextColor3 = Color3.fromRGB(50, 150, 255)
+	end)
+	
+	--// DRAGGABLE
+	local UIS = game:GetService("UserInputService")
+	local dragging, dragInput, dragStart, startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		Frame.Position = UDim2.new(
+			startPos.X.Scale,
+			startPos.X.Offset + delta.X,
+			startPos.Y.Scale,
+			startPos.Y.Offset + delta.Y
+		)
+	end
+	
+	Frame.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			dragging = true
+			dragStart = input.Position
+			startPos = Frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	Frame.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement then
+			dragInput = input
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+	
+	
+end;
+task.spawn(C_2);
+-- StarterGui.ScreenGui.KeySystem.ExitButton.LocalScript
+local function C_9()
+local script = G2L["9"];
+	local ExitButton = script.Parent
+	local KeySystem = ExitButton.Parent
+	local ScreenGui = KeySystem.Parent
+	
+	-- Prevent spam clicking
+	local isProcessing = false
+	
+	ExitButton.MouseButton1Click:Connect(function()
+		if isProcessing then
+			return
+		end
+		isProcessing = true
+	
+		-- Instantly destroy the GUI
+		ScreenGui:Destroy()
+	end)
+end;
+task.spawn(C_9);
+-- StarterGui.ScreenGui.KeySystem.EnterKey.FixTextBoxOverflow
+local function C_c()
+local script = G2L["c"];
+	local enterKey = script.Parent
+	local textBox = enterKey:FindFirstChildOfClass("TextBox")
+	if textBox then
+	    textBox.TextWrapped = false
+	    textBox.TextScaled = false
+	    textBox.TextSize = 20 -- Set a fixed, readable size
+	    textBox.TextXAlignment = Enum.TextXAlignment.Left
+	    textBox.TextYAlignment = Enum.TextYAlignment.Center
+	    textBox.TextTruncate = Enum.TextTruncate.None -- Allow overflow, don't truncate
+	    textBox.ClearTextOnFocus = false
+	
+	    -- Optionally, scroll to the end when text changes so overflow is visible
+	    textBox:GetPropertyChangedSignal("Text"):Connect(function()
+	        if textBox.CursorPosition then
+	            textBox.CursorPosition = #textBox.Text + 1
+	        end
+	    end)
+	end
+	enterKey.ClipsDescendants = true
+	
+	
+end;
+task.spawn(C_c);
+-- StarterGui.ScreenGui.KeySystem.VerifyKey.VerifyKeyButton.LocalScript
+local function C_11()
+local script = G2L["11"];
+	-- StarterGui.ScreenGui.KeySystem.VerifyKey.VerifyKeyButton.LocalScript
+	local function C_11()
+		local script = G2L["11"];
+		-- Verify Key Button Script
+		local VerifyKeyBtn = script.Parent -- The button itself
+		local ScreenGui = VerifyKeyBtn.Parent.Parent.Parent -- Get the ScreenGui
+		local KeySystem = ScreenGui:WaitForChild("KeySystem")
+		local EnterKey = KeySystem:WaitForChild("EnterKey")
+		local KeyBox = EnterKey:WaitForChild("TextBox") -- The text input box
+		local Notification = ScreenGui:WaitForChild("Notification") -- Your notification frame
+	
+		-- Set medium notification size
+		Notification.Size = UDim2.new(0.35, 0, 0.18, 0) -- Medium size
+	
+		-- Your valid key (replace with your actual key)
+		local VALID_KEY = "YOUR_VALID_KEY_HERE" -- Change this to your actual key
+	
+		-- Prevent spam clicking
+		local isProcessing = false
+	
+		VerifyKeyBtn.MouseButton1Click:Connect(function()
+			-- Prevent spam clicking
+			if isProcessing then
+				return
+			end
+			isProcessing = true
+	
+			local enteredKey = KeyBox.Text
+	
+			-- Check if key is empty
+			if enteredKey == "" then
+				-- Show error notification
+				Notification.Visible = true
+	
+				-- Update notification text
+				local titleLabel = Notification:WaitForChild("TextLabel")
+				local messageLabel = Notification:FindFirstChildWhichIsA("TextLabel", true) -- Find any text label
+	
+				if titleLabel then
+					titleLabel.Text = "Ivani Key System"
+					titleLabel.TextSize = 18 -- Slightly larger text
+				end
+	
+				-- Find the message label (second text label)
+				local textLabels = Notification:GetChildren()
+				for _, child in ipairs(textLabels) do
+					if child:IsA("TextLabel") and child ~= titleLabel then
+						child.Text = "Please enter a key first!"
+						child.TextSize = 17 -- Slightly larger text
+						break
+					end
+				end
+	
+				-- Slide in animation
+				Notification.Position = UDim2.new(1.1, 0, 0.72093, 0)
+				local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+				local tween = game:GetService("TweenService"):Create(Notification, tweenInfo, {Position = UDim2.new(0.70044, 0, 0.72093, 0)})
+				tween:Play()
+	
+				-- Hide after 3 seconds
+				wait(3)
+				local tweenOut = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+				local tween2 = game:GetService("TweenService"):Create(Notification, tweenOut, {Position = UDim2.new(1.1, 0, 0.72093, 0)})
+				tween2:Play()
+				tween2.Completed:Connect(function() 
+					Notification.Visible = false 
+					isProcessing = false -- Re-enable button
+				end)
+				return
+			end
+	
+			-- Check if key matches
+			enteredKey = string.upper(string.gsub(enteredKey, "%s+", ""))
+			local validKeyUpper = string.upper(VALID_KEY)
+	
+			if enteredKey == validKeyUpper then
+				-- Show success notification - Key is Valid
+				Notification.Visible = true
+	
+				-- Update notification text
+				local titleLabel = Notification:WaitForChild("TextLabel")
+				if titleLabel then
+					titleLabel.TextSize = 18 -- Slightly larger text
+				end
+	
+				-- Find the message label (second text label)
+				local textLabels = Notification:GetChildren()
+				for _, child in ipairs(textLabels) do
+					if child:IsA("TextLabel") and child ~= titleLabel then
+						child.Text = "Key is Valid"
+						child.TextSize = 16 -- Slightly larger text
+						break
+					end
+				end
+	
+				-- Slide in animation
+				Notification.Position = UDim2.new(1.1, 0, 0.72093, 0)
+				local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+				local tween = game:GetService("TweenService"):Create(Notification, tweenInfo, {Position = UDim2.new(0.70044, 0, 0.72093, 0)})
+				tween:Play()
+	
+				-- Wait and then close the GUI and execute the hub
+				wait(2)
+				ScreenGui:Destroy()
+				-- Execute the Ivani Hub
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/IvaniHub/Ivanihub/refs/heads/main/Ivani.Hub"))()
+	
+			else
+				-- Show error notification - Key Invalid
+				Notification.Visible = true
+	
+				-- Update notification text
+				local titleLabel = Notification:WaitForChild("TextLabel")
+				if titleLabel then
+					titleLabel.TextSize = 18 -- Slightly larger text
+				end
+	
+				-- Find the message label (second text label)
+				local textLabels = Notification:GetChildren()
+				for _, child in ipairs(textLabels) do
+					if child:IsA("TextLabel") and child ~= titleLabel then
+						child.Text = "Key Invalid"
+						child.TextSize = 16 -- Slightly larger text
+						break
+					end
+				end
+	
+				-- Slide in animation
+				Notification.Position = UDim2.new(1.1, 0, 0.72093, 0)
+				local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+				local tween = game:GetService("TweenService"):Create(Notification, tweenInfo, {Position = UDim2.new(0.70044, 0, 0.72093, 0)})
+				tween:Play()
+	
+				-- Hide after 3 seconds
+				wait(3)
+				local tweenOut = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+				local tween2 = game:GetService("TweenService"):Create(Notification, tweenOut, {Position = UDim2.new(1.1, 0, 0.72093, 0)})
+				tween2:Play()
+				tween2.Completed:Connect(function() 
+					Notification.Visible = false 
+					isProcessing = false -- Re-enable button
+				end)
+			end
+		end)
+	end;
+	task.spawn(C_11);
+end;
+task.spawn(C_11);
+-- StarterGui.ScreenGui.KeySystem.GetKey.GetKeyButton.LocalScript
+local function C_15()
+local script = G2L["15"];
+	-- Get Key Button Script
+	local GetKeyBtn = script.Parent -- The button itself
+	local ScreenGui = GetKeyBtn.Parent.Parent.Parent -- Get the ScreenGui
+	local KeySystem = ScreenGui:WaitForChild("KeySystem")
+	local Notification = ScreenGui:WaitForChild("Notification") -- Your notification frame
+	
+	-- Your valid key
+	local VALID_KEY = "https://discord.gg/q5ZpuEpT"
+	
+	-- Prevent spam clicking
+	local isProcessing = false
+	
+	GetKeyBtn.MouseButton1Click:Connect(function()
+		-- Prevent spam clicking
+		if isProcessing then
+			return
+		end
+		isProcessing = true
+	
+		-- Copy key to clipboard
+		setclipboard(VALID_KEY)
+	
+		-- Show success notification - Discord Link Copied
+		Notification.Visible = true
+	
+		-- Update notification text
+		local titleLabel = Notification:WaitForChild("TextLabel")
+	
+		-- Find the message label (second text label)
+		local textLabels = Notification:GetChildren()
+		for _, child in ipairs(textLabels) do
+			if child:IsA("TextLabel") and child ~= titleLabel then
+				child.Text = "Link Key Copied"
+				child.TextSize = 17 -- Set second text label size to 17
+				break
+			end
+		end
+	
+		-- Slide in animation
+		Notification.Position = UDim2.new(1.1, 0, 0.72093, 0)
+		local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+		local tween = game:GetService("TweenService"):Create(Notification, tweenInfo, {Position = UDim2.new(0.70044, 0, 0.72093, 0)})
+		tween:Play()
+	
+		-- Hide after 3 seconds
+		wait(3)
+		local tweenOut = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+		local tween2 = game:GetService("TweenService"):Create(Notification, tweenOut, {Position = UDim2.new(1.1, 0, 0.72093, 0)})
+		tween2:Play()
+		tween2.Completed:Connect(function() 
+			Notification.Visible = false 
+			isProcessing = false -- Re-enable button
+		end)
+	end)
+end;
+task.spawn(C_15);
+-- StarterGui.ScreenGui.KeySystem.JoinDiscord.JoinDiscordButton.LocalScript
+local function C_19()
+local script = G2L["19"];
+	-- Get Key Button Script
+	local GetKeyBtn = script.Parent -- The button itself
+	local ScreenGui = GetKeyBtn.Parent.Parent.Parent -- Get the ScreenGui
+	local KeySystem = ScreenGui:WaitForChild("KeySystem")
+	local Notification = ScreenGui:WaitForChild("Notification") -- Your notification frame
+	
+	-- Your valid key
+	local VALID_KEY = "https://discord.gg/q5ZpuEpT"
+	
+	-- Prevent spam clicking
+	local isProcessing = false
+	
+	GetKeyBtn.MouseButton1Click:Connect(function()
+		-- Prevent spam clicking
+		if isProcessing then
+			return
+		end
+		isProcessing = true
+	
+		-- Copy key to clipboard
+		setclipboard(VALID_KEY)
+	
+		-- Show success notification - Discord Link Copied
+		Notification.Visible = true
+	
+		-- Update notification text
+		local titleLabel = Notification:WaitForChild("TextLabel")
+	
+		-- Find the message label (second text label)
+		local textLabels = Notification:GetChildren()
+		for _, child in ipairs(textLabels) do
+			if child:IsA("TextLabel") and child ~= titleLabel then
+				child.Text = "Discord Link Copied"
+				break
+			end
+		end
+	
+		-- Slide in animation
+		Notification.Position = UDim2.new(1.1, 0, 0.72093, 0)
+		local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+		local tween = game:GetService("TweenService"):Create(Notification, tweenInfo, {Position = UDim2.new(0.70044, 0, 0.72093, 0)})
+		tween:Play()
+	
+		-- Hide after 3 seconds
+		wait(3)
+		local tweenOut = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+		local tween2 = game:GetService("TweenService"):Create(Notification, tweenOut, {Position = UDim2.new(1.1, 0, 0.72093, 0)})
+		tween2:Play()
+		tween2.Completed:Connect(function() 
+			Notification.Visible = false 
+			isProcessing = false -- Re-enable button
+		end)
+	end)
+end;
+task.spawn(C_19);
+
+return G2L["1"], require;

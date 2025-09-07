@@ -514,7 +514,7 @@ local script = G2L["11"];
 		Notification.Size = UDim2.new(0.35, 0, 0.18, 0) -- Medium size
 	
 		-- Your valid key (replace with your actual key)
-		local VALID_KEY = "IVAN" -- Change this to your actual key
+		local VALID_KEY = "IvaniHub2025" -- Change this to your actual key
 	
 		-- Prevent spam clicking
 		local isProcessing = false

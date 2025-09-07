@@ -11,7 +11,7 @@ local isScriptDisabled = true -- Script is disabled by default
 local function checkAuthentication()
     -- Placeholder authentication logic (customize this)
     -- Example: Check a local key entered by the user or a server response
-    local authKey = "L" -- Replace with your authentication key
+    local authKey = "IVAN" -- Replace with your authentication key
     local userInputKey = "IVAN" -- Replace with user input or server-provided key (e.g., via prompt)
 
     -- Simulate authentication (replace with real logic)
@@ -514,7 +514,7 @@ local script = G2L["11"];
 		Notification.Size = UDim2.new(0.35, 0, 0.18, 0) -- Medium size
 	
 		-- Your valid key (replace with your actual key)
-		local VALID_KEY = "YOUR_VALID_KEY_HERE" -- Change this to your actual key
+		local VALID_KEY = "IVAN" -- Change this to your actual key
 	
 		-- Prevent spam clicking
 		local isProcessing = false

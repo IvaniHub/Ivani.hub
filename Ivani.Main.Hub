@@ -3,7 +3,7 @@ local targetPlaceId = 126884695634066
 if game.PlaceId ~= targetPlaceId then
     warn("This script is only for 'Grow a Garden' (PlaceId: 126884695634066). Kicking player...")
     game.Players.LocalPlayer:Kick("The script only works in Grow a Garden!")
-    return -- Exit the script
+    retrn -- Exit the script
 end
 
 -- Disable flag and authentication check
